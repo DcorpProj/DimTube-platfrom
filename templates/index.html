@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Видеоплатформа</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Видеоплатформа</h1>
+    <a href="{{ url_for('upload') }}">Загрузить видео</a>
+    <h2>Список видео</h2>
+    <ul>
+    {% for video in videos %}
+        <li>
+            <video width="320" height="240" controls>
+                <source src="{{ url_for('static', filename='uploads/' + video.filename) }}" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+            <br>
+            <a href="{{ url_for('delete', video_id=video.id) }}">Удалить</a>
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
