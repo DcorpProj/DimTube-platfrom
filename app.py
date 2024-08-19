@@ -1,11 +1,4 @@
-   @app.route('/delete/<int:video_id>')
-   def delete(video_id):
-       video = Video.query.get_or_404(video_id)
-       os.remove(os.path.join(app.config['UPLOAD_FOLDER'], video.filename))
-       db.session.delete(video)
-       db.session.commit()
-       return redirect(url_for('index'))
-    flask import Flask, request, redirect, url_for, render_template
+flask import Flask, request, redirect, url_for, render_template
 from flask_sqlalchemy import SQLAlchemy
 import os
 
